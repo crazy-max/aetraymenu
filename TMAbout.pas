@@ -63,7 +63,6 @@ implementation
 uses ShellApi, JclFileUtils;
 
 {$R *.dfm}
-{$I AeTrayMenu.lc}
 
 procedure TAboutDiag.AboutTextsURLClick(Sender: TObject;
   const URLText: String; Button: TMouseButton);
@@ -82,8 +81,7 @@ begin
   try
     VersionInfo := TJclFileVersionInfo.Create(ParamStr(0));
     try
-      InternalVersionText := 'Version ' + VersionInfo.FileVersion + #13#10 +
-                              'Built on ' + __COMPILE_DATETIME_AS_STRING__;
+      InternalVersionText := 'Version ' + VersionInfo.FileVersion;
     finally
       FreeAndNil(VersionInfo);
     end;  //try..finally
