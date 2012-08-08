@@ -1,0 +1,37 @@
+package BcBarMenusD70;
+
+{$R *.res}
+{$R '..\Source\BarMenuRegister.dcr'}
+{$ALIGN 8}
+{$ASSERTIONS OFF}
+{$BOOLEVAL OFF}
+{$DEBUGINFO OFF}
+{$EXTENDEDSYNTAX ON}
+{$IMPORTEDDATA ON}
+{$IOCHECKS ON}
+{$LOCALSYMBOLS OFF}
+{$LONGSTRINGS ON}
+{$OPENSTRINGS ON}
+{$OPTIMIZATION ON}
+{$OVERFLOWCHECKS OFF}
+{$RANGECHECKS OFF}
+{$REFERENCEINFO OFF}
+{$SAFEDIVIDE OFF}
+{$STACKFRAMES OFF}
+{$TYPEDADDRESS OFF}
+{$VARSTRINGCHECKS ON}
+{$WRITEABLECONST ON}
+{$MINENUMSIZE 1}
+{$IMAGEBASE $400000}
+{$DESCRIPTION 'Bluecave: BarMenus Components (Designtime)'}
+{$DESIGNONLY}
+{$IMPLICITBUILD OFF}
+
+requires
+  BcBarMenus70,
+  vcl;
+
+contains
+  BarMenuRegister in '..\Source\BarMenuRegister.pas';
+
+end.

@@ -1,0 +1,47 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+<link rel="stylesheet" type="text/css" href="main.css" />
+<title>Script Format Overview</title>
+</head>
+<body>
+<p>
+<table border="0" cellpadding="0" cellspacing="0" class="header"><tr>
+<td width="5" bgcolor="#4682b4">&nbsp;</td>
+<td bgcolor="#4682b4"><h1>Script Format Overview</h1></td>
+<td width="150" background="hdrgrad.jpg">&nbsp;</td>
+</tr></table>
+AeTrayMenu scripts are divided into <dfn>sections</dfn>. Each section controls a different aspect of the behaviour of the tray menu. A section is started by specifying the name of the section enclosed in square brackets [ ]. Each section contains a number of <dfn>entries</dfn>.
+</p>
+<p>
+There are two different types of sections: those such as <a href="sectconfig.htm">[Config]</a> whose entries contain <dfn>directive</dfn> names and values (in the form <code>Directive=Value</code>), and those such as <a href="sectvar.htm">[Variables]</a> whose entries are divided into <dfn><a href="params.htm">parameters</a></dfn>.
+</p>
+<p>
+Here is an example:
+<samp>
+[Config]
+ImageList=myimages.bmp
+TrayIcon=myicon.ico
+
+[Variables]
+Name: MyAppVersion; Type: static; Value: &quot;version 1.0&quot;
+</samp>
+</p>
+<p>
+Note that you can specify multiple sections of the same name. In this case, the contents of those sections are merged.
+</p>
+<p>
+You can put &quot;comments&quot; in the script (which are ignored by AeTrayMenu) by placing a semicolon at the beginning of a line. For example:
+<samp>
+  ; This is a comment. I could put reminders to myself here...
+</samp>
+</p>
+<p>
+<div class="seealso"><img src="seealso.gif" width="15" height="11" alt="See also" />&nbsp;See Also</div>
+<a href="params.htm">Parameters in Sections</a><br />
+<a href="vars.htm">Variables</a><br />
+<a href="sectconfig.htm">[Config] Section</a>
+</p>
+</body>
+</html>

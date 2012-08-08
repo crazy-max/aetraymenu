@@ -1,0 +1,30 @@
+{TODO 5 : (Fred's e-mail) Add feature to shutdown running programs / send DDE commands }
+{TODO 2 : Add variable parsing for URLs in HTML Window? }
+{DONE 2 :
+Add flags for HtmlWindow action, like openmaximized, noresize,
+noscrollbars, enablecontextmenu etc.}
+{TODO  : Redesign Variable system (make it look more like the action system)}
+{DONE 1 : Add multiple-instance handling}
+{DONE 1 :
+Add command-line parameters for shutting down an instance
+of AeTrayMenu}
+{DONE 1 : Add 'UID' setting}
+{DONE 2 :
+Remove TSrvCtrl and TTBImageList from project
+(to prevent any possible licensing issues)}
+
+{DONE 2 :
+If "Caption" is not specified for a servicesubmenu item,
+set its Caption to the service's DisplayName}
+{DONE -cNew feature :
+Add action for manipulating services directly?
+(Start/stop/etc.)}
+{TODO : What to do with Application.Titile / Application.Icon?}
+{DONE :
+Services[] have to be activated
+(this isn't done in TTMConfigReader!)}
+{DONE 2 : Add support for environment variables}
+{DONE 1 -cBugs : Fix service action 'restart'}
+{DONE 2 -cError handling : Improve error handling on invalid config}
+{DONE 1 -cError handling : Improve error handling on non-existing service}
+

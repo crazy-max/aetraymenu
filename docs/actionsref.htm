@@ -1,0 +1,56 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+<link rel="stylesheet" type="text/css" href="main.css" />
+<title>List of Available Actions</title>
+</head>
+<body>
+<p>
+<table border="0" cellpadding="0" cellspacing="0" class="header"><tr>
+<td width="5" bgcolor="#4682b4">&nbsp;</td>
+<td bgcolor="#4682b4"><h1>List of Available Actions</h1></td>
+<td width="150" background="hdrgrad.jpg">&nbsp;</td>
+</tr></table>
+AeTrayMenu can perform certain <em>actions</em> when <a href="sectmenu.htm">menu items</a> are clicked by the user. There are also other places where actions appear, such as the <a href="sectdoubleclick.htm">[DoubleClickAction]</a> section, and <a href="sectbatch.htm">batch action sections</a>.
+</p>
+<p>
+First of all, you often need to specify which action you want to have performed by specifying an <code>Action</code> <a href="params.htm">parameter</a>. Furthermore, some actions also require additional parameters.
+</p>
+<p>
+The following is a list of all the available action types along with a description. Actions that need additional parameters will be explained in more detail in separate topics.
+</p>
+<p>
+<dl>
+<dt>about</dt>
+<dd>Displays the AeTrayMenu about dialog.</dd>
+<dt><a name="closeservices">closeservices</a></dt>
+<dd>In order to be able to monitor the services you've specified, AeTrayMenu keeps handles open to them. If you want to uninstall a service from within the traymenu, this will cause it to be "marked for deletion" (that is: it won't be fully removed until a reboot) since Windows detects it's still in use. By executing the <code>closeservices</code> action, you can make sure AeTrayMenu won't interfere. You can let AeTrayMenu re-open the handles by executing the <a href="#resetservices.htm"><code>resetservices</code></a> action.<br />
+If you want to uninstall a service from an external program while AeTrayMenu is running, you can use <a href="cmdline.htm">command-line parameters</a> to temporarily shut the traymenu down.</dd>
+<dt><a name="controlpanelservices">controlpanelservices</a></dt>
+<dd>Displays the "Services" console (on NT systems, you can open it by going to Start &gt; Settings &gt; Control Panel &gt; Administrative Tools &gt; Services).</dd>
+<dt>exit</dt>
+<dd>Shuts down AeTraymenu.</dd>
+<dt>multi</dt>
+<dd>Provides you with a way to execute multiple actions consecutively, much like Windows/DOS batch files. <a href="actmulti.htm">More information...</a> (See also <a href="usebatch.htm">How to Use Batch Actions</a>).
+<dt>readconfig</dt>
+<dd>This actions lets AeTrayMenu reset itself and reload its configuration file.
+<dt><a name="resetservices">resetservices</a></dt>
+<dd>Causes AeTrayMenu to reset all its handles to the services it monitors. Can e.g. be used to 'restore' the traymenu after a call to the <code>closeservices</code> action.</dd>
+<dt>run</dt>
+<dd>With this type of action, you can run a program. You can specify which program is to be executed, along with the working directory, parameters etc. <a href="actrun.htm">More information...</a></dd>
+<dt>service</dt>
+<dd>Allows you to start, stop, suspend, resume and restart services. <a href="actserv.htm">More information...</a></dd>
+<dt>shellexecute</dt>
+<dd>This action is similar to the <code>run</code> action, but it can also be used to open documents with their associated programs. <a href="actshellexec.htm">More information...</a></dd>
+</dl>
+</p>
+<p>
+<div class="seealso"><img src="seealso.gif" width="15" height="11" alt="seealso (1K)" />&nbsp;See Also</div>
+<a href="sectmenu.htm">[Menu.*] Section</a><br />
+<a href="sectdoubleclick.htm">[DoubleClickAction] Section</a><br />
+<a href="usebatch.htm">How to Use Batch Actions</a><br />
+<a href="cmdline.htm">Command-line parameters</a>
+</p>
+</body>
+</html>

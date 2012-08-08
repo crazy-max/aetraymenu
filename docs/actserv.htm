@@ -1,0 +1,72 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+<link rel="stylesheet" type="text/css" href="main.css" />
+<title>"Service" Action</title>
+</head>
+<body>
+<p>
+<table border="0" cellpadding="0" cellspacing="0" class="header"><tr>
+<td width="5" bgcolor="#4682b4">&nbsp;</td>
+<td bgcolor="#4682b4"><h1>"Service" Action</h1></td>
+<td width="150" background="hdrgrad.jpg">&nbsp;</td>
+</tr></table>
+</p>
+<p>
+<h2>Description</h2>
+Windows services can be manipulated through the <code>service</code> action.
+</p>
+<p>
+<h2>Parameters</h2>
+The following is a list of the supported <a href="params.htm">parameters</a>:
+<dl>
+<dt>Service<span class="reqmarker" title="Required">REQ</span></dt>
+<dd>
+<h3>Value</h3>
+String
+<h3>Description</h3>
+The name of the service you want to control. Note that you also have to list all the services you refer to in the <a href="sectserv.htm">[Services] section</a>.
+<h3>Example</h3>
+<code>Service: mysql</code>
+</dd>
+<dt>ServiceAction<span class="reqmarker" title="Required">REQ</span></dt>
+<dd>
+<h3>Value</h3>
+<code>startresume</code>|<code>pause</code>|<code>stop</code>|<code>restart</code>
+<h3>Description</h3>
+To resume a service after it has been paused, use <code>startresume</code> (not a second <code>pause</code>).
+<h3>Example</h3>
+<code>ServiceAction: startresume</code>
+</dd>
+<dt>Flags</dt>
+<dd>
+<h3>Value</h3>
+Flag list
+<h3>Description</h3>
+This parameter is a set of extra options. Multiple options may be used by separating them by spaces. The following options are supported:
+<dl>
+<dt>ignoreerrors</dt>
+<dd>AeTrayMenu automatically disables a menu item when the specified action can't be performed on a service. However, when you're using <a href="sectbatch.htm">batch action sections</a>, this won't work. In that case, it's often handy to use the <code>ignoreerrors</code> flag to prevent the batch from getting stuck when a service is not available.</dd>
+<dt>waituntilterminated</dt>
+<dd>If you're executing multiple actions sequentially (in a <a href="sectbatch.htm">batch action section</a>), you can use this flag to suspend execution of the next action until the service has been started, paused, etc.</dd>
+</dl>
+<h3>Example</h3>
+<code>Flags: ignoreerrors waituntilterminated</code>
+</dd>
+</dl>
+</p>
+<p>
+<h2>Example</h2>
+<samp>
+Action: service; Service: mysql; ServiceAction: restart 
+</samp>
+</p>
+<p>
+<div class="seealso"><img src="seealso.gif" width="15" height="11" alt="See also" />&nbsp;See Also</div>
+<a href="actionsref.htm">List of Available Actions</a><br />
+<a href="services.htm">How to Use the Service Features</a><br />
+<a href="sectserv.htm">[Services] Section</a>
+</p>
+</body>
+</html>

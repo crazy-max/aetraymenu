@@ -1,0 +1,82 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+<link rel="stylesheet" type="text/css" href="main.css" />
+<title>How to Use Batch Actions</title>
+</head>
+<body>
+<p>
+<table border="0" cellpadding="0" cellspacing="0" class="header"><tr>
+<td width="5" bgcolor="#4682b4">&nbsp;</td>
+<td bgcolor="#4682b4"><h1>How to Use Batch Actions</h1></td>
+<td width="150" background="hdrgrad.jpg">&nbsp;</td>
+</tr></table>
+Sometimes, you'd like to make AeTrayMenu perform multiple actions when a menu item is clicked. Normally, you would write a batch (<code>.bat</code>) file and then run that batch file. However, AeTrayMenu gives you a way to include those batches in the configration file, in order to keep your configuration centralized: <a href="actmulti.htm"><code>multi</code></a> actions.
+</p>
+<p>
+<h2>How "Multi" Actions Work</h2>
+First, you assign the <a href="actmulti.htm"><code>multi</code></a> action to a menu item, like this:
+<samp>
+[Menu.Left]
+Type: item; Caption: "Run Multiple Commands"; Action: multi; Actions: MultiActions
+</samp>
+This tells AeTrayMenu to look in a section called <code>[MultiActions]</code> for the actions that have to be performed when the user chooses the menu item.
+</p>
+<p>
+In such a <a href="sectbatch.htm">batch actions section</a>, you list the actions. It is like listing a menu, but without the <code>Type</code>, <code>Caption</code> and <code>Glyph</code> parameters. For example:
+<samp>
+[MultiActions]
+Action: run; FileName: "%Windows%\Notepad.exe"
+Action: run; FileName: "%Windows%\Calc.exe"
+</samp>
+This example opens both Notepad and Calculator.
+</p>
+<p>
+<h2>Preventing Simultaneous Execution</h2>
+It is possible to suspend execution of the next action until the current item has completed. In the example above, AeTrayMenu tells Windows to run Notepad, and right after that issues the command to run Calculator. What if you want to run Notepad, and after Notepad has closed run Calculator?
+</p>
+<p>
+For those situations, the actions <a href="actrun.htm"><code>run</code></a>, <a href="actshellexec.htm"><code>shellexecute</code></a> and <a href="actserv.htm"><code>service</code></a> have the <code>waituntilterminated</code> flag. You could for example enter:
+<samp>
+[MultiActions]
+Action: run; FileName: "%Windows%\Notepad.exe"; Flags: waituntilterminated
+Action: run; FileName: "%Windows%\Calc.exe"
+</samp>
+in the configuration file, so that Calculator will be run after Notepad has closed.
+</p>
+<p>
+Another flag, <code>waituntilinputidle</code>, is supported only by <code>run</code> and <code>shellexecute</code>. It suspends execution of the batch actions until the program/document that is executed is ready for user input. 
+</p>
+<p>
+<h2>Ignoring errors</h2>
+If one of the actions in the batch causes an error, the execution of the batch will stop. You can prevent this by using the <code>ignoreerrors</code> flag. An example:
+<samp>
+[MultiActions]
+Action: service; Service: apache2; ServiceAction: startresume; Flags: ignoreerrors
+Action: service; Service: mysql; ServiceAction: startresume; Flags: ignoreerrors
+</samp>
+A good example of where this may be useful is a service controller. Suppose you can't be sure that all services exist, but you want to be able to start all existing services. You'd have to somehow dynamically adapt the above section depending on which services exist and which don't. However, by using the <code>ignoreerrors</code> flag, you can just attempt starting them all, without bothering about error messages.
+</p>
+<p>
+<h2>Service Handles</h2>
+There's one tricky thing about working with AeTrayMenu: you have to be careful when running programs that modify service configurations while the traymenu is running. AeTrayMenu keeps handles open to all services it is told to control, so that e.g. uninstaling the services will "mark it for removal upon reboot" instead of removing it immediately. When doing this from external applications, you can use the <code>-quit</code> <a href="cmdline.htm">command-line parameter</a>, but what to do when attempting to uninstall a service from within the traymenu itself?
+</p>
+<p>
+For this purpose, two special actions are available: <a href="actionsref.htm"><code>closeservices</code></a> and <a href="actionsref.htm"><code>resetservices</code></a>. <code>closeservices</code> will let the traymenu close its handles, while <code>resetservices</code> will re-open them (if possible). An example of their usage:
+<samp>
+[MultiActions]
+Action: closeservices
+Action: run; FileName: "%Apache%\bin\Apache.exe"; Parameters: "-k uninstall"
+Action: resetservices
+</samp>
+Always be sure to call <code>resetservices</code> as well, otherwise the user won't be able to control any of the services!
+</p>
+<p>
+<div class="seealso"><img src="seealso.gif" width="15" height="11" alt="seealso (1K)" />&nbsp;See Also</div>
+<a href="sectbatch.htm">Batch Actions Sections</a><br />
+<a href="actmulti.htm">"Multi" Action</a><br />
+<a href="actionsref.htm">List of Available Actions</a>
+</p>
+</body>
+</html>

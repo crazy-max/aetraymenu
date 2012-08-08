@@ -1,0 +1,107 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+<link rel="stylesheet" type="text/css" href="main.css" />
+<title>[Menu.*] Section</title>
+</head>
+<body>
+<p>
+<table border="0" cellpadding="0" cellspacing="0" class="header"><tr>
+<td width="5" bgcolor="#4682b4">&nbsp;</td>
+<td bgcolor="#4682b4"><h1>[Menu.*] Section</h1></td>
+<td width="150" background="hdrgrad.jpg">&nbsp;</td>
+</tr></table>
+You can define two popup menus for the tray icon: one for the left mouse button and one for the right button. In the <code>[Menu.Left]</code> and <code>[Menu.Right]</code> sections, you can define the menu-items you want to appear in the menus.
+</p>
+<p>
+Here is an example of a <code>[Menu.Left]</code> section:
+<samp>
+[Menu.Left]
+Type: separator; Caption: &quot;Service Monitor&quot;
+Type: item; Caption: &quot;&amp;About...&quot;; Action: about; Glyph: 1
+Type: item; Caption: &quot;E&amp;xit&quot;; Action: exit
+Type: separator; Caption: &quot;Services&quot;
+Type: servicesubmenu; Caption: &quot;&amp;Messenger&quot;; Service: Messenger; SubMenu: MessengerMenu
+Type: servicesubmenu; Service: ClipSrv; SubMenu: ClipSrvMenu
+Type: item; Caption: &quot;Start All Services&quot;; Action: multi; Actions: StartAll
+Type: item; Caption: &quot;Stop All Services&quot;; Action: multi; Actions: StopAll
+Type: item; Caption: &quot;&amp;Services Applet&quot;; Action: controlpanelservices
+Type: separator; Caption: &quot;Programs&quot;
+Type: item; Caption: &quot;&amp;Notepad&quot;; Action: run; FileName: &quot;%Windows%\Notepad.exe&quot;; Glyph: 5
+Type: submenu; Caption: &quot;&amp;Other&quot;; SubMenu: MySubMenu; Glyph: 3
+
+[MessengerMenu]
+<span style="color:silver">...</span>
+
+[ClipSrvMenu]
+<span style="color:silver">...</span>
+
+[MySubMenu]
+<span style="color:silver">...</span>
+</samp>
+</p>
+<p>
+The following is a list of the supported <a href="params.htm">parameters</a>:
+<dl>
+<dt>Type<span class="reqmarker" title="Required">REQ</span></dt>
+<dd>
+<h3>Value</h3>
+<code>item</code>|<code>separator</code>|<code>submenu</code>|<code>servicesubmenu</code>
+<h3>Description</h3>
+There are four types of menu items:
+<ul>
+<li><code>item</code> - a normal menu item that can perform an action when the user clicks on it. You should also specify the <code>Caption</code> and <code>Action</code> parameters.</li>
+<li><code>separator</code> - a horizontal line. You can adapt the separators' style using the <a href="sectmenusettings.htm#separators"><code>Separators*</code></a> settings in the <a href="sectmenusettings.htm"><code>[Menu.*.Settings]</code></a> sections.</li> If you've set the <a href="menuseparatorsseparatorstyle.htm"><code>SeparatorsSeparatorStyle</code></a> directive to <code>shortline</code> or <code>caption</code>, you can also specify a <code>Caption</code>. Omitting the <code>Caption</code> parameter in case of the <code>caption</code> style causes a 'normal' separator to be drawn.
+<li><a name="submenu"><code>submenu</code></a></li> - defines a submenu. You also have to add the <code>Caption</code> and the <code>SubMenu</code> parameters.
+<li><a name="servicesubmenu"><code>servicesubmenu</code></a> - a special kind of submenu whose glyph is automagically adjusted to the running state of the service; see also <a href="configserviceglyph.htm">[Config]: ServiceGlyph*</a>. You also have to specify the <code>Service</code> and <code>SubMenu</code> parameters. If you omit <code>Caption</code>, the caption will be set to the service's <em>display name</em>.</li>
+</ul>
+<h3>Example</h3>
+<code>Type: separator</code>
+</dd>
+<dt>Caption</dt>
+<dd>
+<h3>Value</h3>
+String
+<h3>Description</h3>
+If the item is a menu item, <code>Caption</code> defines the caption of the menu item. The first character that is preceeded by an ampersand (&amp;) will serve as hotkey. If you've set <a href="menuautohotkeys.htm"><code>AutoHotKeys</code></a> to true, it's possible that the hotkey will be changed/added if there are duplicate hotkeys. To embed an ampersand in the caption, use two consecutive ampersands.<br />
+If the item is a separator, and if you've set <a href="menuseparatorsseparatorstyle.htm"><code>SeparatorsSeparatorStyle</code></a> to <code>shortline</code> or <code>caption</code>, <code>Caption</code> can be used to insert a text into the separator. 
+<h3>Example</h3>
+<code>Caption: &quot;&amp;Drag &amp;&amp; Drop&quot;</code>
+</dd>
+<dt>Glyph</dt>
+<dd>
+<h3>Value</h3>
+Glyph index
+<h3>Description</h3>
+If you want a glyph to appear next to the menu item, specify its index here.
+<h3>Example</h3>
+<code>Glyph: 2</code>
+</dd>
+<dt><a name="submenup">SubMenu</a></dt>
+<dd>
+<h3>Value</h3>
+Section name
+<h3>Description</h3>
+If the item's type is <code>submenu</code> or <code>servicesubmenu</code>, you have to create a section in the configuration file in which you list its items. Specify that section's name here.
+<h3>Example</h3>
+<code>SubMenu: MySubMenu</code>
+</dd>
+<dt>Action</dt>
+<dd>
+<h3>Value</h3>
+Action type
+<h3>Description</h3>
+If the item's type is <code>item</code>, then an <em>action</em> is performed when the user clicks it. Take a look at the <a href="actionsref.htm">List of Available Actions</a> for a complete reference on the actions that can be performed by AeTrayMenu.<br />
+If the action that's associated with the menu item appears to be unavailable, AeTrayMenu will automatically disable the item. For example, if a service is already running, menu items that would start the service will be disabled.
+</dd>
+</dl>
+</p>
+<p>
+<div class="seealso"><img src="seealso.gif" width="15" height="11" alt="See also" />&nbsp;See Also</div>
+<a href="sectmenusettings.htm">[Menu.*.Settings] Section</a><br />
+<a href="configimagelist.htm">[Config]: ImageList</a><br />
+<a href="actionsref.htm">List of Available Actions</a><br />
+</p>
+</body>
+</html>
