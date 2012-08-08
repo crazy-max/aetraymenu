@@ -1,0 +1,52 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+<link rel="stylesheet" type="text/css" href="main.css" />
+<title>Using the Service Features</title>
+</head>
+<body>
+<p>
+<table border="0" cellpadding="0" cellspacing="0" class="header"><tr>
+<td width="5" bgcolor="#4682b4">&nbsp;</td>
+<td bgcolor="#4682b4"><h1>Using the Service Features</h1></td>
+<td width="150" background="hdrgrad.jpg">&nbsp;</td>
+</tr></table>
+AeTrayMenu was originally developed as a service monitor. Therefore, the program has some special features for this purpose. This topic describes the steps you should follow in order to use these features.
+</p>
+<p>
+<h2>Listing Services</h2>
+Before you can use the service control/monitoring features, you have to tell AeTrayMenu which services you want to control. You have to do this in the <a href="sectserv.htm">[Services] section</a>.
+</p>
+<p>
+<h2>Service Control</h2>
+You can define menu items that start/resume, stop, pause and restart services. For this, the  <a href="actserv.htm"><code>service</code> action</a> has been provided. Those menu items will be automagically enabled/disabled when necessary.
+</p>
+<p>
+<h2>Status Indication</h2>
+AeTrayMenu's tray icon can be changed to reflect the running state of the services you have specified. At intervals set by the <a href="configservicecheckinterval.htm"><code>ServiceCheckInterval</code></a> setting in the <a href="sectconfig.htm"><code>[Config]</code></a> section, AeTrayMenu will update <a href="configtrayiconrunning.htm">its tray icon</a> and the <a href="msgrunninghint.htm">tray icon's hint text</a>.
+</p>
+<p>
+If you want to control multiple services, it can be handy to put the start, stop etc. menu items for a service in a submenu. For these cases, there's a special kind of submenu available; the <a href="sectmenu.htm#servicesubmenu"><code>servicesubmenu</code></a> automatically adapts its glyph to the running state of the service it has been linked to.
+</p>
+<p>
+<h2>Other features</h2>
+There are some other features available that may come in useful when working with services:
+<ul>
+<li>You can open the Windows NT "Services" console using the <a href="actionsref.htm#controlpanelservices"><code>controlpanelservices</code></a> action.</li>
+<li>When you want to install/uninstall services while AeTrayMenu is running, this may lead to trouble because of AeTrayMenu having handles open to them. You can either use the <code>-quit</code> <a href="cmdline.htm">command-line parameter</a> to shutdown a running AeTrayMenu instance, or use the <a href="actionsref.htm#closeservices"><code>closeservices</code></a> action to let AeTrayMenu close its handles.</li>
+</ul>
+</p>
+<p>
+<div class="seealso"><img src="seealso.gif" width="15" height="11" alt="See also" />&nbsp;See Also</div>
+<a href="sectserv.htm">[Services] Section</a><br />
+<a href="actserv.htm">"Service" Action</a><br />
+<a href="configservicecheckinterval.htm">[Config]: ServiceCheckInterval</a><br />
+<a href="configtrayiconrunning.htm">[Config]: TrayIcon*Running</a><br />
+<a href="msgrunninghint">[Messages]: *RunningHint</a><br />
+<a href="actionsref.htm">List of Available Actions</a><br />
+<a href="sectmenu.htm">[Menu.*] Section</a><br />
+<a href="cmdline.htm">Command-line Parameters</a>
+</p>
+</body>
+</html>

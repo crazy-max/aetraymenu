@@ -1,0 +1,48 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+<link rel="stylesheet" type="text/css" href="main.css" />
+<title>[Config]: ImageList</title>
+</head>
+<body>
+<p>
+<table border="0" cellpadding="0" cellspacing="0" class="header"><tr>
+<td width="5" bgcolor="#4682b4">&nbsp;</td>
+<td bgcolor="#4682b4"><h1>[Config]: ImageList</h1></td>
+<td width="150" background="hdrgrad.jpg">&nbsp;</td>
+</tr></table>
+</p>
+<p>
+<h2>Value</h2>
+Filename<span class="varmarker" title="May include variables">VAR</span><span class="reqmarker" title="Required">REQ</span>
+</p>
+<p>
+<h2>Description</h2>
+As in normal Windows menus, a small image (called a <dfn>glyph</dfn>) can appear beside each menu item. Those glyphs are stored in one single bitmap file. This bitmap file should contain one single row of glyphs that are 16 by 16 pixels. This is an example of such a bitmap:
+<img src="imagelistexample.bmp" alt="imagelistexample (14K)" class="blockimage" />
+For each glyph, the upper left pixel's color is treated as the transparent color.
+</p>
+<p>
+All 'glyph index' values (as in for example the <a href="configtrayiconrunning.htm">TrayIcon*Running</a> directives) specify a glyph in this bitmap. The first (leftmost) bitmap is number 0, the second is number 1 etc.
+</p>
+<p>
+You can specify a filename relative to the location of the AeTrayMenu executable, or a fully-qualified path.
+</p>
+<p>
+<h2>Examples</h2>
+<samp>
+[Config]
+ImageList=images.bmp
+</samp>
+<samp>
+[Config]
+ImageList=res\images.bmp
+</samp>
+<samp>
+[Config]
+ImageList=%MyAppPath%\traymenuimages.bmp
+</samp>
+</p>
+</body>
+</html>

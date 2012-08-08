@@ -1,0 +1,53 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+<link rel="stylesheet" type="text/css" href="main.css" />
+<title>Variables</title>
+</head>
+<body>
+<p>
+<table border="0" cellpadding="0" cellspacing="0" class="header"><tr>
+<td width="5" bgcolor="#4682b4">&nbsp;</td>
+<td bgcolor="#4682b4"><h1>Variables</h1></td>
+<td width="150" background="hdrgrad.jpg">&nbsp;</td>
+</tr></table>
+The majority of the script entries can have <dfn>variables</dfn> embedded in them. These are predefined strings enclosed in percent characters %. AeTraymenu translates the variables to their literal values, depending on e.g. the system configuration. For example, <code>%ProgramFiles%</code>, as described below, would translate to <code>&quot;C:\Program Files&quot;</code> on most systems. 
+</p>
+<p>
+You can define your own variables in the <a href="sectvar.htm">[Variables] section</a>.
+</p>
+<p>
+If a variable has been marked as a <dfn>path variable</dfn>, AeTrayMenu automatically removes any double backslashes that are caused by the variable's contents ending in a backslash. For example, if a particular path variable <code>myvar</code> would contain the value <code>C:\</code>, and you would type <code>%myvar%\file</code>, AeTrayMenu would translate this to <code>C:\file</code> and not <code>C:\\file</code>.
+</p>
+<p>
+In this documentation, parameters and directives that may include variables are marked with this icon: <span class="varmarker" title="May include variables">VAR</span>.
+</p>
+<p>
+<h2>Built-in Variables</h2>
+Besides the variables you can define in the <a href="sectvar.htm">[Variables] section</a>, AeTrayMenu already provides the following variables:
+<dl>
+<dt>%AeTrayMenuPath% <span class="pathvarmarker">(path variable)</span></dt>
+<dd>The directory in which the AeTrayMenu executable is located.</dd>
+<dt>%Cmd%</dt>
+<dd>The full pathname of the system's standard command interpreter. On Windows NT/2000/XP, this is <code>Windows\System32\cmd.exe</code>. On Windows 9x/Me, this is <code>Windows\COMMAND.COM</code>. Note that the COMSPEC environment variable is not used when expanding this constant.</dd>
+<dt>%CommonFiles% <span class="pathvarmarker">(path variable)</span></dt>
+<dd>Common Files. The path of the system's Common Files directory, typically <code>&quot;C:\Program Files\Common Files&quot;</code>.</dd>
+<dt>%Program Files% <span class="pathvarmarker">(path variable)</span></dt>
+<dd>Program Files. The path of the system's Program Files directory, typically <code>&quot;C:\Program Files&quot;</code>.</dd>
+<dt>%System% <span class="pathvarmarker">(path variable)</span></dt>
+<dd>The system's Windows System directory (System32 on Windows NT platforms).</dd>
+<dt>%SysDrive% <span class="pathvarmarker">(path variable)</span></dt>
+<dd>The drive onto which Windows has been installed.</dd>
+<dt>%Temp% <span class="pathvarmarker">(path variable)</span></dt>
+<dd>The Windows temporary directory. This is the value of the user's TMP or TEMP environment variable.</dd>
+<dt>%Windows% <span class="pathvarmarker">(path variable)</span></dt>
+<dd>The system's Windows directory, typically <code>&quot;C:\WINDOWS&quot;</code> or <code>&quot;C:\WINNT&quot;</code> on NT systems.</dd>
+</dl>
+</p>
+<p>
+<div class="seealso"><img src="seealso.gif" width="15" height="11" alt="See also" />&nbsp;See Also</div>
+<a href="sectvar.htm">[Variables] section</a>
+</p>
+</body>
+</html>

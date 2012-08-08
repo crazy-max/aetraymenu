@@ -1,0 +1,56 @@
+[OPTIONS]
+Compatibility=1.1 or later
+Compiled file=AeTrayMenu.chm
+Contents file=AeTrayMenu.hhc
+Default Window=Main
+Default topic=whatis.htm
+Display compile progress=Yes
+Full-text search=Yes
+Index file=AeTrayMenu.hhk
+Language=0x409 Engels (Verenigde Staten)
+Title=Aestan Tray Menu - Documentation
+
+[WINDOWS]
+Main="Aestan Tray Menu - Documentation","AeTrayMenu.hhc","AeTrayMenu.hhk","welcome.htm","welcome.htm",,,,,0x23420,,0x300e,,0x110b0000,,,,,,0
+
+
+[FILES]
+about.htm
+actionsref.htm
+actmulti.htm
+actrun.htm
+actserv.htm
+actshellexec.htm
+cmdline.htm
+config.htm
+configid.htm
+configimagelist.htm
+configservicecheckinterval.htm
+configserviceglyph.htm
+configtrayicon.htm
+configtrayiconrunning.htm
+contact.htm
+conventions.htm
+format.htm
+license.htm
+msgrunninghint.htm
+params.htm
+redistr.htm
+sectbatch.htm
+sectconfig.htm
+sectdoubleclick.htm
+sectmenu.htm
+sectmenusettings.htm
+sectmsg.htm
+sectserv.htm
+sectsubmenu.htm
+sectvar.htm
+services.htm
+usebatch.htm
+vars.htm
+welcome.htm
+whatis.htm
+sectstartup.htm
+
+[INFOTYPES]
+

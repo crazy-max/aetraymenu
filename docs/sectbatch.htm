@@ -1,0 +1,50 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+<link rel="stylesheet" type="text/css" href="main.css" />
+<title>Batch Actions Sections</title>
+</head>
+<body>
+<p>
+<table border="0" cellpadding="0" cellspacing="0" class="header"><tr>
+<td width="5" bgcolor="#4682b4">&nbsp;</td>
+<td bgcolor="#4682b4"><h1>Batch Actions Sections</h1></td>
+<td width="150" background="hdrgrad.jpg">&nbsp;</td>
+</tr></table>
+If you're using the <a href="actmulti.htm"><code>multi</code> action</a>, or if you want to use the <a href="sectdoubleclick.htm"><code>[DoubleClickAction]</code></a>, you'll have to create sections in your script file that contain a list of actions that are to be performed by AeTrayMenu sequentially. (Tip: you could see a batch action section as a <a href="sectmenu.htm">[Menu.*] section</a> with some parameters removed).
+</p>
+<p>
+Here is an example of a <code>[DoubleClickAction]</code> section:
+<samp>
+[DoubleClickAction]
+Action: run; FileName: "%Apache%\bin\Apache.exe"; Parameters: "-k install"; ShowCmd: hidden; Flags: waituntilterminated
+Action: run; FileName: "%MySQL%\bin\mysqld-opt.exe"; Parameters: "--install"; ShowCmd: hidden; Flags: waituntilterminated
+Action: resetservices
+Action: service; Service: Apache2; ServiceAction: startresume; Flags: ignoreerrors
+Action: service; Service: MySQL; ServiceAction: startresume; Flags: ignoreerrors
+</samp>
+</p>
+<p>
+The following is a list of the supported <a href="params.htm">parameters</a>:
+<dl>
+<dt>Action<span class="reqmarker" title="Required">REQ</span></dt>
+<dd>
+<h3>Value</h3>
+Action type
+<h3>Description</h3>
+If the item's type is <code>item</code>, then an <em>action</em> is performed when the user clicks it. Take a look at the <a href="actionsref.htm">List of Available Actions</a> for a complete reference on the actions that can be performed by AeTrayMenu.<br />
+If the action that's associated with the menu item appears to be unavailable, AeTrayMenu will automatically disable the item. For example, if a service is already running, menu items that would start the service will be disabled.
+</dd>
+</dl>
+</p>
+<p>
+<div class="seealso"><img src="seealso.gif" width="15" height="11" alt="seealso (1K)" />&nbsp;See Also</div>
+<a href="usebatch.htm">How to Use Batch Actions</a><br />
+<a href="actionsref.htm">List of Available Actions</a><br />
+<a href="actmulti.htm">"Multi" Action</a><br />
+<a href="sectdoubleclick.htm">[DoubleClickAction] Section</a>
+<a href="sectstartup.htm">[StartupAction] Section</a>
+</p>
+</body>
+</html>

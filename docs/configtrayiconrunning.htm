@@ -1,0 +1,44 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+<link rel="stylesheet" type="text/css" href="main.css" />
+<title>[Config]: TrayIcon*Running</title>
+</head>
+<body>
+<p>
+<table border="0" cellpadding="0" cellspacing="0" class="header"><tr>
+<td width="5" bgcolor="#4682b4">&nbsp;</td>
+<td bgcolor="#4682b4"><h1>[Config]: TrayIcon*Running</h1></td>
+<td width="150" background="hdrgrad.jpg">&nbsp;</td>
+</tr></table>
+</p>
+<p>
+<h2>Value</h2>
+Glyph index
+</p>
+<p>
+<h2>Description</h2>
+The directives <code>TrayIconAllRunning</code>, <code>TrayIconNoneRunning</code> and <code>TrayIconSomeRunning</code> control which tray icon is displayed when all, none and some of the services specified in the <a href="sectserv.htm">[Services] section</a> are running. Instead of pointing to a Windows icon file, these directives contain a glyph index that points to a sub-bitmap in the <a href="configimagelist.htm">ImageList</a>.
+</p>
+<div class="stop">
+<img src="stopsign.gif" width="16" height="16" alt="Stopsign" class="leftmarker" />You cannot specify both the <a href="configtrayicon.htm"><code>TrayIcon</code></a> directive and the <code>TrayIcon*Running</code> directives.
+</div>
+<p>
+<h2>Example</h2>
+<samp>
+[Config]
+ImageList=images.bmp
+TrayIconAllRunning=0
+TrayIconSomeRunning=1
+TrayIconNoneRunning=2
+</samp>
+</p>
+<p>
+<div class="seealso"><img src="seealso.gif" width="15" height="11" alt="See also" />&nbsp;See Also</div>
+<a href="services.htm">How to Use the Service Features</a><br />
+<a href="configimagelist.htm">[Config]: ImageList</a><br />
+<a href="configtrayicon.htm">[Config]: TrayIcon</a><br />
+</p>
+</body>
+</html>

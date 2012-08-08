@@ -1,0 +1,8 @@
+syntax: glob
+*.dproj.local
+*.identcache
+__history
+*.dcu
+*.exe
+*.drc
+*.map

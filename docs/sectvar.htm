@@ -1,0 +1,160 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+<link rel="stylesheet" type="text/css" href="main.css" />
+<title>[Variables] Section</title>
+</head>
+<body>
+<p>
+<table border="0" cellpadding="0" cellspacing="0" class="header"><tr>
+<td width="5" bgcolor="#4682b4">&nbsp;</td>
+<td bgcolor="#4682b4"><h1>[Variables] Section</h1></td>
+<td width="150" background="hdrgrad.jpg">&nbsp;</td>
+</tr></table>
+In this section, you can define your own <a href="vars.htm">Variables</a>. The variables are initialized at startup (when reading the configuration file).
+</p>
+<p>
+Here is an example of a <code>[Variables]</code> section:
+<samp>
+[Variables]
+Name: MyAppVer; Type: static; Value: "version 1.0"
+Name: MyAppPath; Type: registry; Root: HKLM; Key: "Software\My Company\My App"; ValueName: "InstallPath"; Flags: ispath; DefaultValue: "%ProgramFiles%\MyApp"
+Name: ComputerName; Type: environment; EnvName: "COMPUTERNAME"
+Name: MyParam; Type: commandline; ParamName: "MyParam"; DefaultValue: "Cow"
+Name: Prompt; Type: prompt; PromptCaption: "My Tray Menu"; PromptText: "Please enter a message:"; DefaultValue: "Hello World"
+</samp>
+</p>
+<p>
+The following is a list of the supported <a href="params.htm">parameters</a>:
+<dl>
+<dt>Name<span class="reqmarker" title="Required">REQ</span></dt>
+<dd>
+<h3>Value</h3>
+String
+<h3>Description</h3>
+The name of the variable.
+<h3>Example</h3>
+<code>Name: MyVariable</code>
+</dd>
+<dt>Type<span class="reqmarker" title="Required">REQ</span></dt>
+<dd>
+<h3>Value</h3>
+<code>static</code>|<code>registry</code>|<code>environment</code>|<code>commandline</code>|<code>prompt</code>
+<h3>Description</h3>
+Tells AeTrayMenu what sort of variable you're creating. The following variable types are available:
+<ul>
+<li><dfn>Static</dfn> variables just contain a fixed value;</li>
+<li><dfn>Registry</dfn> variables are read from the Windows registry;</li>
+<li><dfn>Environment</dfn> variables are taken from Windows environment variables;</li>
+<li><dfn>Commandline</dfn> variables are read from the AeTrayMenu command-line arguments;</li>
+<li><dfn>Prompt</dfn> variables don't contain a fixed value; instead, when they are encountered, a message box pops up, asking the user for its contents.</li>
+</ul>
+<h3>Example</h3>
+<code>Type: static</code>
+</dd>
+<dt>Flags</dt>
+<dd>
+<h3>Value</h3>
+Flag list
+<h3>Description</h3>
+This parameter is a set of extra options. Multiple options may be used by separating them by spaces. The following options are supported:
+<dl>
+<dt>ispath</dt>
+<dd>Marks the variable as a <dfn>path variable</dfn> (see <a href="vars.htm">Variables</a> for more information).</dd>
+</dl>
+<h3>Example</h3>
+<code>Flags: ispath</code>
+</dd>
+<dt>Value</dt>
+<dd>
+<h3>Value</h3>
+String
+<h3>Description</h3>
+If the variable's type is &quot;static&quot;, this parameter specifies the contents of the variable.
+<h3>Example</h3>
+<code>Value: &quot;my text here&quot;</code>
+</dd>
+<dt>Root</dt>
+<dd>
+<h3>Value</h3>
+<code>HKCR</code>|<code>HKCU</code>|<code>HKLM</code>|<code>HKU</code>|<code>HKCC</code>
+<h3>Description</h3>
+For registry variables, this parameter specifies the root key.
+<h3>Example</h3>
+<code>Root: HKCU</code>
+</dd>
+<dt>Key</dt>
+<dd>
+<h3>Value</h3>
+String<span class="varmarker" title="May include variables">VAR</span>
+<h3>Description</h3>
+For registry variables, this parameter specifies the subkey name.
+<h3>Example</h3>
+<code>Key: "Software\My Company\My Program"</code>
+</dd>
+<dt>ValueName</dt>
+<dd>
+<h3>Value</h3>
+String<span class="varmarker" title="May include variables">VAR</span>
+<h3>Description</h3>
+For registry variables, this parameter specifies the name of the registry value to read. If this is blank, the &quot;Default&quot; value is read. The registry value's contents are automatically converted to a string.
+<h3>Example</h3>
+<code>ValueName: "Version"</code>
+</dd>
+<dt>EnvName</dt>
+<dd>
+<h3>Value</h3>
+String<span class="varmarker" title="May include variables">VAR</span>
+<h3>Description</h3>
+For environment variables, this parameter specifies the name of the environment variable to read.
+<h3>Example</h3>
+<code>EnvName: "PATH"</code>
+</dd>
+<dt><a name="paramname">ParamName</a></dt>
+<dd>
+<h3>Value</h3>
+String<span class="varmarker" title="May include variables">VAR</span>
+<h3>Description</h3>
+For command-line variables, this parameter gives the name of the command-line parameter to read (case-insensitive). The command-line parameter should be in the form <code>-name=value</code>. See <a href="cmdline.htm">Command-line Parameters</a> for more information.
+<h3>Example</h3>
+<code>ParamName: "myparam"</code>
+</dd>
+<dt>PromptCaption<span class="varmarker" title="May include variables">VAR</span></dt>
+<dd>
+<h3>Value</h3>
+String
+<h3>Description</h3>
+Contains the text in the caption bar of the message box that pops up when the prompt variable is encountered.
+<h3>Example</h3>
+<code>PromptCaption: "My Tray Menu"</code>
+</dd>
+<dt>PromptText<span class="varmarker" title="May include variables">VAR</span></dt>
+<dd>
+<h3>Value</h3>
+String
+<h3>Description</h3>
+Contains the message box text of the prompt that appears when the prompt variable is encountered. 
+<h3>Example</h3>
+<code>PromptText: "Please enter the message you want to send:"</code>
+</dd>
+<dt>DefaultValue</dt>
+<dd>
+<h3>Value</h3>
+String<span class="varmarker" title="May include variables">VAR</span>
+<h3>Description</h3>
+If you specify a default value, this value will be used if reading the variable's contents from the registry, the environment or the command-line fails (e.g. because the command-line parameter hasn't been specified, or the key doesn't exist). If reading the variable fails, and no default value has been given, AeTrayMenu will show an error message and exit at startup.
+<h3>Example 1</h3>
+<code>DefaultValue: "%ProgramFiles%\MyApp"</code>
+<h3>Example 2</h3>
+<code>DefaultValue: ""</code><br />
+This example will cause any errors to be hidden from the user; if there is an error, the variable will be empty.
+</dd>
+</dl>
+</p>
+<p>
+<div class="seealso"><img src="seealso.gif" width="15" height="11" alt="See also" />&nbsp;See Also</div>
+<a href="vars.htm">Variables</a><br />
+</p>
+</body>
+</html>
