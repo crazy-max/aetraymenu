@@ -35,11 +35,13 @@ type
     procedure BuiltInActionExecute(Sender: TObject);
     procedure SelectMenuItem(Sender: TObject);
     procedure LeftRightClickPopupPopup(Sender: TObject);
+    procedure TrayIconMouseDown(Sender: TObject; Button: TMouseButton;
+      Shift: TShiftState; X, Y: Integer);
   private
     { FIELDS }
     FServices: TObjectList;
     FVariables: TObjectList;
-    FDoubleClickAction: TTMMultiAction;
+    FDoubleClickAction, FLeftClickAction, FRightClickAction: TTMMultiAction;
     FStartupAction: TTMMultiAction;
     FTrayIconSomeRunning: Integer;
     FServiceGlyphStopped: Integer;
@@ -70,6 +72,8 @@ type
     property Variables: TObjectList read FVariables write SetVariables;
     property HtmlActions: TStringList read FHtmlActions write SetHtmlAction;
     property DoubleClickAction: TTMMultiAction read FDoubleClickAction;
+    property LeftClickAction: TTMMultiAction read FLeftClickAction;
+    property RightClickAction: TTMMultiAction read FRightClickAction;
     property StartupAction: TTMMultiAction read FStartupAction;
     property TrayIconAllRunning: Integer read FTrayIconAllRunning write FTrayIconAllRunning;
     property TrayIconSomeRunning: Integer read FTrayIconSomeRunning write FTrayIconSomeRunning;
@@ -131,7 +135,6 @@ begin
         if not InstShellExec(ExpandVariables('%System%\services.msc', Variables),
             '/s', '', '', SW_SHOWNORMAL, ErrorCode) then
           raise Exception.Create('Could not open Services applet');
-            { DONE 3 : Improve ControlPanelServices built-in action }
       end;
     biaCloseServices: begin
         for I := 0 to Services.Count - 1 do
@@ -149,7 +152,6 @@ begin
       end;
     else
       ShowMessage(SMainBuiltInNotImplemented);
-      { DONE 4 -cMissing feaures : Implement all built-in actions }
   end;
 end;
 
@@ -159,7 +161,6 @@ var
   HintText: String;
 begin
   { Check if the configured services are still up & running }
-  { DONE 3 : Implement TMainForm.CheckServicesTimerTimer }
   runningCount := 0;
   for I := 0 to Services.Count - 1 do
     with (Services[I] as TTMService) do
@@ -224,6 +225,8 @@ begin
   FVariables := TObjectList.Create(True);
   FHtmlActions := TStringList.Create;
   FDoubleClickAction := TTMMultiAction.Create;
+  FLeftClickAction := TTMMultiAction.Create;
+  FRightClickAction := TTMMultiAction.Create;
   FStartupAction := TTMMultiAction.Create;
   FCustomAboutText := TStringList.Create;
 
@@ -254,6 +257,8 @@ begin
   { Memory cleanup }
   FreeAndNil(FCustomAboutText);
   FreeAndNil(FDoubleClickAction);
+  FreeAndNil(FLeftClickAction);
+  FreeAndNil(FRightClickAction);
   FreeAndNil(FStartupAction);
   for J := 0 to (HtmlActions.Count - 1) do
     (HtmlActions.Objects[J] as TTMAction).Free;
@@ -280,7 +285,6 @@ procedure TMainForm.LeftRightClickPopupPopup(Sender: TObject);
       with Item.Items[I] do
         if Count > 0 then
         begin
-          { DONE 3 : Use correct imageindex depending on service status }
           if Tag <> 0 then
             with TTMService(Tag) do
             begin
@@ -308,7 +312,6 @@ procedure TMainForm.LeftRightClickPopupPopup(Sender: TObject);
   end;
 
 begin
-  { DONE 2 : Enable/disable service control menu items in LeftRightClickPopupPopup }
   EnableItems((Sender as TBcBarPopupMenu).Items);
 end;
 
@@ -330,7 +333,6 @@ procedure TMainForm.LoadBuiltInVariables;
   end;
 
 begin
-  { DONE 3 -cMissing feaures : Automatically add built-in variables }
   AddVar('AeTrayMenuPath', ExtractFilePath(Application.ExeName));
   AddVar('Windows', GetWinDir);
   AddVar('System', GetSystemDir);
@@ -355,6 +357,8 @@ begin
       { Clear the menus, services etc. }
       ClearMenus;
       FDoubleClickAction.Clear;
+      FLeftClickAction.Clear;
+      FRightClickAction.Clear;
       FStartupAction.Clear;
       FServices.Clear;
       FVariables.Clear;
@@ -363,16 +367,18 @@ begin
       LoadBuiltInVariables;
 
       { Initialize the configuration reader }
-      CheckServicesTimer := Self.CheckServicesTimer;
-      DoubleClickAction := Self.DoubleClickAction;
-      StartupAction := Self.StartupAction;
-      ImageList := Self.ImageList;
+      CheckServicesTimer     := Self.CheckServicesTimer;
+      DoubleClickAction      := Self.DoubleClickAction;
+      LeftClickAction        := Self.LeftClickAction;
+      RightClickAction       := Self.RightClickAction;
+      StartupAction          := Self.StartupAction;
+      ImageList              := Self.ImageList;
       OnBuiltInActionExecute := BuiltInActionExecute;
-      OnSelectMenuItem := SelectMenuItem;
-      Services := Self.Services;
-      TrayIcon := Self.TrayIcon;
-      Variables := Self.Variables;
-      HtmlActions := Self.HtmlActions;
+      OnSelectMenuItem       := SelectMenuItem;
+      Services               := Self.Services;
+      TrayIcon               := Self.TrayIcon;
+      Variables              := Self.Variables;
+      HtmlActions            := Self.HtmlActions;
 
       { Load the configuration file }
       try
@@ -426,7 +432,17 @@ begin
       Self.CustomAboutVersion := CustomAboutVersion;
       Self.CustomAboutText := CustomAboutText;
 
-      { DONE 3 : Read && apply all the other settings, too }
+      { Apply left/right click actions, if any }
+      if LeftClickAction.Count > 0 then
+        TrayIcon.DropDownMenu := nil
+      else
+        TrayIcon.DropDownMenu := LeftClickPopup;
+        
+      if RightClickAction.Count > 0 then
+        TrayIcon.PopupMenu := nil
+      else
+        TrayIcon.PopupMenu := RightClickPopup;
+      
     finally
       FreeAndNil(ConfigReader);
     end;  //with configreader try..finally
@@ -500,8 +516,17 @@ end;
 procedure TMainForm.TrayIconDblClick(Sender: TObject; Button: TMouseButton;
   Shift: TShiftState; X, Y: Integer);
 begin
-  { Respond to double-clicks }
   DoubleClickAction.ExecuteAction;
+end;
+
+procedure TMainForm.TrayIconMouseDown(Sender: TObject; Button: TMouseButton;
+  Shift: TShiftState; X, Y: Integer);
+begin
+  if (Button = mbLeft) and (LeftClickAction.Count > 0) then
+    LeftClickAction.ExecuteAction;
+
+  if (Button = mbRight) and (RightClickAction.Count > 0) then
+    RightClickAction.ExecuteAction;
 end;
 
 end.

@@ -299,7 +299,6 @@ var
 begin
   GetSystemDirectory(Buf, SizeOf(Buf));
   Result := StrPas(Buf);
-  { DONE 3 : Check, and if necessary fix %System% variable }
 end;
 
 function GetTempDir: String;

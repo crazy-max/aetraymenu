@@ -72,6 +72,7 @@ object MainForm: TMainForm
     PopupMenu = RightClickPopup
     Visibility = []
     OnDblClick = TrayIconDblClick
+    OnMouseDown = TrayIconMouseDown
     Left = 104
     Top = 8
   end
