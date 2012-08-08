@@ -1,0 +1,46 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+<link rel="stylesheet" type="text/css" href="main.css" />
+<title>Redistributing AeTrayMenu</title>
+</head>
+<body>
+<p>
+<table border="0" cellpadding="0" cellspacing="0" class="header"><tr>
+<td width="5" bgcolor="#4682b4">&nbsp;</td>
+<td bgcolor="#4682b4"><h1>Redistributing AeTrayMenu</h1></td>
+<td width="150" background="hdrgrad.jpg">&nbsp;</td>
+</tr></table>
+The main purpose of AeTrayMenu is that it may be redistributed for use in other software packages. You are completely free to use it both in commercial and non-commercial packages (see the <a href="license.htm">License Agreement</a>). There are a couple of technical and non-technical issues you may consider when redistributing AeTrayMenu:
+</p>
+<p>
+<h2>Files You Need</h2>
+Since all thirdparty libraries AeTrayMenu uses are linked to the executable, you'll only need to include the following files:
+<ul>
+<li><strong>The AeTrayMenu executable</strong> - If you want, you can rename the executable to suit your wishes and needs.</li>
+<li><strong>The configuration file</strong> - In most cases, it's the most convenient to name this file <code>&lt;name of the AeTrayMenu executable&gt;.ini</code>.</li>
+<li><strong>An imagelist bitmap</strong> - You must specify the filename of this bitmap in the <a href="configimagelist.htm"><code>ImageList</code></a> directive. You could name this file <code>&lt;name of the AeTrayMenu executable&gt;.dat</code>.</li>
+<li>If you have specified one or more sidebar images in the <a href="sectmenusettings.htm">[Menu.*.Settings]</a> sections, you'll have to include those bitmaps as well.</li>
+</ul>
+</p>
+<p>
+<h2>Installing the Traymenu</h2>
+The program doesn't need a special installation, but you might consider the following:
+<ul>
+<li>Be sure to close the traymenu using the <code>-quit</code> <a href="cmdline.htm">command-line parameter</a> if there's a chance that your installer will attempt to overwrite the traymenu's executable while it's running.</li>
+<li>If you want the traymenu to run at Windows startup, you can place a shortcut in the <em>Startup</em> folder in the Start menu. You can also use the <code>HKEY_LOCALMACHINE\Software\Microsoft\Windows\CurrentVersion\Run</code> registry key (or the same key under <code>HKEY_CURRENT_USER</code>).</li>
+</ul>
+</p>
+<p>
+<h2>The About Box</h2>
+As you've probably seen, you can easily leave AeTrayMenu's About box out of the traymenu. You're allowed to do so, but I would appreciate it if you'd put a menu item with the <a href="actionsref.htm"><code>about</code></a> action somewhere.
+</p>
+<p>
+<div class="seealso"><img src="seealso.gif" width="15" height="11" alt="seealso (1K)" />&nbsp;See Also</div>
+<a href="license.htm">License Agreement</a><br />
+<a href="configimagelist.htm">[Config]: ImageList</a><br />
+<a href="cmdline.htm">Command-line parameters</a>
+</p>
+</body>
+</html>

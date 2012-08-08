@@ -1,0 +1,73 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <ProjectGuid>{c5db499c-b049-4d07-a972-2f5f474e7fcb}</ProjectGuid>
+    <MainSource>AeTrayMenu.dpr</MainSource>
+    <Configuration Condition=" '$(Configuration)' == '' ">Release</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <DCC_DCCCompiler>DCC32</DCC_DCCCompiler>
+    <DCC_DependencyCheckOutputName>AeTrayMenu.exe</DCC_DependencyCheckOutputName>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <Version>7.0</Version>
+    <DCC_AssertionsAtRuntime>False</DCC_AssertionsAtRuntime>
+    <DCC_WriteableConstants>True</DCC_WriteableConstants>
+    <DCC_SymbolReferenceInfo>0</DCC_SymbolReferenceInfo>
+    <DCC_Define>RELEASE;madExcept</DCC_Define>
+    <DCC_Description>Aestan Tray Menu; Copyright (c) 2003-2007 Onno Broekmans; http://www.onnodb.com/aetraymenu</DCC_Description>
+    <DCC_RangeChecking>True</DCC_RangeChecking>
+    <DCC_MapFile>3</DCC_MapFile>
+    <DCC_UnitSearchPath>Lib\BarMenus\Source</DCC_UnitSearchPath>
+    <DCC_ResourcePath>Lib\BarMenus\Source</DCC_ResourcePath>
+    <DCC_ObjPath>Lib\BarMenus\Source</DCC_ObjPath>
+    <DCC_IncludePath>Lib\BarMenus\Source</DCC_IncludePath>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <Version>7.0</Version>
+    <DCC_AssertionsAtRuntime>False</DCC_AssertionsAtRuntime>
+    <DCC_WriteableConstants>True</DCC_WriteableConstants>
+    <DCC_SymbolReferenceInfo>0</DCC_SymbolReferenceInfo>
+    <DCC_Define>madExcept;DEBUG</DCC_Define>
+    <DCC_Description>Aestan Tray Menu; Copyright (c) 2003-2007 Onno Broekmans; http://www.onnodb.com/aetraymenu</DCC_Description>
+    <DCC_MapFile>3</DCC_MapFile>
+    <DCC_RangeChecking>True</DCC_RangeChecking>
+  </PropertyGroup>
+  <ProjectExtensions>
+    <Borland.Personality>Delphi.Personality</Borland.Personality>
+    <Borland.ProjectType>VCLApplication</Borland.ProjectType>
+    <BorlandProject>
+<BorlandProject><Delphi.Personality><Parameters><Parameters Name="UseLauncher">False</Parameters><Parameters Name="LoadAllSymbols">True</Parameters><Parameters Name="LoadUnspecifiedSymbols">False</Parameters></Parameters><VersionInfo><VersionInfo Name="IncludeVerInfo">True</VersionInfo><VersionInfo Name="AutoIncBuild">True</VersionInfo><VersionInfo Name="MajorVer">1</VersionInfo><VersionInfo Name="MinorVer">6</VersionInfo><VersionInfo Name="Release">2</VersionInfo><VersionInfo Name="Build">39</VersionInfo><VersionInfo Name="Debug">False</VersionInfo><VersionInfo Name="PreRelease">False</VersionInfo><VersionInfo Name="Special">False</VersionInfo><VersionInfo Name="Private">False</VersionInfo><VersionInfo Name="DLL">False</VersionInfo><VersionInfo Name="Locale">1033</VersionInfo><VersionInfo Name="CodePage">1252</VersionInfo></VersionInfo><VersionInfoKeys><VersionInfoKeys Name="CompanyName">Aestan Software</VersionInfoKeys><VersionInfoKeys Name="FileDescription">Aestan Tray Menu</VersionInfoKeys><VersionInfoKeys Name="FileVersion">1.6.2.39</VersionInfoKeys><VersionInfoKeys Name="InternalName">Tray Menu</VersionInfoKeys><VersionInfoKeys Name="LegalCopyright">Copyright (c) 2003-2007 Onno Broekmans</VersionInfoKeys><VersionInfoKeys Name="LegalTrademarks"></VersionInfoKeys><VersionInfoKeys Name="OriginalFilename"></VersionInfoKeys><VersionInfoKeys Name="ProductName"></VersionInfoKeys><VersionInfoKeys Name="ProductVersion">1.0.0.0</VersionInfoKeys><VersionInfoKeys Name="Comments"></VersionInfoKeys><VersionInfoKeys Name="Website">http://www.onnodb.com/aetraymenu</VersionInfoKeys><VersionInfoKeys Name="LastCompiled">2007-02-18 17:53:56</VersionInfoKeys></VersionInfoKeys><Source><Source Name="MainSource">AeTrayMenu.dpr</Source></Source><Excluded_Packages>
+      
+      
+      
+      
+      
+      
+      
+      
+      <Excluded_Packages Name="C:\Documents and Settings\All Users\Documenten\RAD Studio\5.0\Bpl\DocentDelingListBoxPackage.bpl">SSL Docentendatabase IndelingDocentDelingListBox</Excluded_Packages>
+      <Excluded_Packages Name="$(BDS)\bin\dcloffice2k100.bpl">Microsoft Office 2000 Sample Automation Server Wrapper Components</Excluded_Packages>
+    </Excluded_Packages></Delphi.Personality></BorlandProject></BorlandProject>
+  </ProjectExtensions>
+  <Import Project="$(MSBuildBinPath)\Borland.Delphi.Targets" />
+  <ItemGroup>
+    <DelphiCompile Include="AeTrayMenu.dpr">
+      <MainSource>MainSource</MainSource>
+    </DelphiCompile>
+    <DCCReference Include="TMAbout.pas">
+      <Form>AboutDiag</Form>
+    </DCCReference>
+    <DCCReference Include="TMCmnFunc.pas" />
+    <DCCReference Include="TMConfig.pas" />
+    <DCCReference Include="TMHtmlWindow.pas">
+      <Form>HtmlWindow</Form>
+    </DCCReference>
+    <DCCReference Include="TMMain.pas">
+      <Form>MainForm</Form>
+    </DCCReference>
+    <DCCReference Include="TMMsgs.pas" />
+    <DCCReference Include="TMSrvCtrl.pas" />
+    <DCCReference Include="TMStruct.pas" />
+    <None Include="AeTrayMenu.todo" />
+  </ItemGroup>
+</Project>

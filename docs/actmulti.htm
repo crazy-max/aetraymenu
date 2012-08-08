@@ -1,0 +1,54 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+<link rel="stylesheet" type="text/css" href="main.css" />
+<title>"Multi" Action</title>
+</head>
+<body>
+<p>
+<table border="0" cellpadding="0" cellspacing="0" class="header"><tr>
+<td width="5" bgcolor="#4682b4">&nbsp;</td>
+<td bgcolor="#4682b4"><h1>"Multi" Action</h1></td>
+<td width="150" background="hdrgrad.jpg">&nbsp;</td>
+</tr></table>
+</p>
+<p>
+<h2>Description</h2>
+A powerful feature of AeTrayMenu is that you can let it perform multiple actions for one menu item, so that you don't have to write a separate batch file or so. You can enumerate the actions in a section to which you link using a <code>multi</code> action. 
+</p>
+<p>
+<h2>Parameters</h2>
+The following is a list of the supported <a href="params.htm">parameters</a>:
+<dl>
+<dt>Actions<span class="reqmarker" title="Required">REQ</span>
+</dt>
+<dd>
+<h3>Value</h3>
+String
+<h3>Description</h3>
+The name of the section that contains the list of actions that should be performed.
+<h3>Example</h3>
+<code>Actions: BatchSection</code>
+</dd>
+</dl>
+</p>
+<p>
+<h2>Example</h2>
+<samp>
+[Menu.Left]
+Type: item; Caption: "Start All Services"; Action: multi; Actions: StartAll
+
+[StartAll]
+Action: service; Service: apache2; ServiceAction: startresume; Flags: ignoreerrors
+Action: service; Service: mysql; ServiceAction: startresume; Flags: ignoreerrors
+</samp>
+</p>
+<p>
+<div class="seealso"><img src="seealso.gif" width="15" height="11" alt="See also" />&nbsp;See Also</div>
+<a href="actionsref.htm">List of Available Actions</a><br />
+<a href="usebatch.htm">How to Use Batch Actions</a><br />
+<a href="sectbatch.htm">Batch Actions Sections</a><br />
+</p>
+</body>
+</html>

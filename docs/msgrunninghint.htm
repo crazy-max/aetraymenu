@@ -1,0 +1,59 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+<link rel="stylesheet" type="text/css" href="main.css" />
+<title>[Messages]: *RunningHint</title>
+</head>
+<body>
+<p>
+<table border="0" cellpadding="0" cellspacing="0" class="header"><tr>
+<td width="5" bgcolor="#4682b4">&nbsp;</td>
+<td bgcolor="#4682b4"><h1>[Messages]: *RunningHint</h1></td>
+<td width="150" background="hdrgrad.jpg">&nbsp;</td>
+</tr></table>
+</p>
+<p>
+<h2>Value</h2>
+String<span class="varmarker" title="May include variables">VAR</span>
+</p>
+<p>
+<h2>Description</h2>
+The directives <code>AllRunningHint</code>, <code>NoneRunningHint</code> and <code>SomeRunningHint</code> control the hint text of the tray icon. Which of the hint texts is used depends on whether all, some or none of the services listed in the <a href="sectserv.htm">[Services] section</a> are running.
+</p>
+<p>
+Besides the normal variables, you can also use two special 'variables' that only work for these directives:
+<dl>
+<dt>%n</dt>
+<dd>If you include the string <code>%n</code> in your directive value, it will be replaced with the number of services currently running.</dd>
+<dt>%t</dt>
+<dd>Will be replaced with the total number of services listed in the <a href="sectserv.htm">[Services] section</a>.</dd>
+</dl>
+</p>
+<p>
+<h2>Examples</h2>
+<samp>
+[Messages]
+AllRunningHint=Service Monitor - All services are up and running
+SomeRunningHint=Service Monitor - Some of your services are down!
+NoneRunningHint=Service Monitor - None of your services are running!!!
+</samp>
+<samp>
+[Messages]
+AllRunningHint=All of %t services are running
+SomeRunningHint=%n of %t services are running
+NoneRunningHint=None of %t services are running
+</samp>
+<samp>
+[Messages]
+AllRunningHint=My Tray Menu
+SomeRunningHint=My Tray Menu
+NoneRunningHint=My Tray Menu
+</samp></p>
+<p>
+<div class="seealso"><img src="seealso.gif" width="15" height="11" alt="See also" />&nbsp;See Also</div>
+<a href="services.htm">How to Use the Service Features</a><br />
+<a href="sectserv.htm">[Services] Section</a>
+</p>
+</body>
+</html>

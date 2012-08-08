@@ -1,0 +1,40 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+<link rel="stylesheet" type="text/css" href="main.css" />
+<title>[Config]: ID</title>
+</head>
+<body>
+<p>
+<table border="0" cellpadding="0" cellspacing="0" class="header"><tr>
+<td width="5" bgcolor="#4682b4">&nbsp;</td>
+<td bgcolor="#4682b4"><h1>[Config]: ID</h1></td>
+<td width="150" background="hdrgrad.jpg">&nbsp;</td>
+</tr></table>
+</p>
+<p>
+<h2>Value</h2>
+String
+</p>
+<p>
+<h2>Description</h2>
+If you don't want multiple instances of your tray menu running simultaneously, you can put an identifier (ID) into your configuration file. You can use anything you want as an ID, but using a Globally Unique IDentifier (GUID) is recommended. There are various tools on the internet for generating those GUIDs. See below for some links.
+</p>
+<p>
+When it starts, AeTrayMenu checks if there are any other instances running with the same ID. If so, it immediately terminates. You can also use the ID to close running instances, using the <code>-quit</code> <a href="cmdline.htm">command-line parameter</a>.
+</p>
+<p>
+<h2>Example</h2>
+<samp>
+[Config]
+ID={42F9F6BD-49C0-42E6-8250-25C98ACE1DAB}
+</samp>
+</p>
+<p>
+<div class="seealso"><img src="seealso.gif" width="15" height="11" alt="See also" />&nbsp;See Also</div>
+<a href="cmdline.htm">Command-line parameters</a><br />
+<a href="http://aerodynamica.idz.net" target="_blank" title="External link (opens in a new window)"><img src="extern.gif" width="12" height="11" alt="External link (opens in a new window)" border="0" />Aerodynamica Software</a> - Creator of <em>GUIDGen</em>, a handy utility for generating GUIDs<br />
+</p>
+</body>
+</html>

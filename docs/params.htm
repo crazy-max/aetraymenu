@@ -1,0 +1,39 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+<link rel="stylesheet" type="text/css" href="main.css" />
+<title>Parameters in Sections</title>
+</head>
+<body>
+<p>
+<table border="0" cellpadding="0" cellspacing="0" class="header"><tr>
+<td width="5" bgcolor="#4682b4">&nbsp;</td>
+<td bgcolor="#4682b4"><h1>Parameters in Sections</h1></td>
+<td width="150" background="hdrgrad.jpg">&nbsp;</td>
+</tr></table>
+All of the sections in a script, with the exception of <a href="sectconfig.htm">[Config]</a>, <a href="sectmsg.htm">[Messages]</a> and <a href="sectmenusettings">[Menu.*.Settings]</a>, contain lines separated into <dfn>parameters</dfn>. The following is an example of a <a href="sectvar.htm">[Variables]</a> section:
+<samp>
+[Variables]
+Name: MyAppVersion; Type: static; Value: &quot;version 1.0&quot;
+Name: MyAppPath; Type: registry; Root: HKLM; Key: &quot;Software\MyApp&quot;; ValueName: InstallPath; Flags: ispath
+</samp>
+</p>
+<p>
+Each parameter consists of a name, followed by a colon, and then a value. Unless otherwise noted, parameters are optional in that they assume a default value if they are not specified. Multiple parameters on a line are separated by a semicolons, and can be listed in any order.
+</p>
+<p>
+The value of a parameter is traditionally surrounded in double quotes (<code>&quot;</code>) when it contains a user-defined string, such as a filename. Using quotes is not required, though, but by doing so it makes it possible to embed leading and trailing spaces in the value, as well as semicolons and double-quote characters.
+</p>
+<p>
+To embed a double-quote character inside a quoted value, use two consecutive double-quote characters. For example:
+<samp>
+&quot;This &quot;&quot; contains &quot;&quot; embedded &quot;&quot; quotes&quot;
+</samp>
+AeTrayMenu would see that as: <code>This &quot; contains &quot; embedded &quot; quotes</code>
+</p>
+<p>
+If you want the value of a parameter to be a single double-quote character, use four double-quote characters: <code>&quot;&quot;&quot;&quot;</code>. The outer two are needed to surround the string in quotes; the inner two are used to embed a single double-quote character.
+</p>
+</body>
+</html>

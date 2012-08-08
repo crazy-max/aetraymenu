@@ -1,0 +1,43 @@
+package BcBarMenus70;
+
+{$R *.res}
+{$ALIGN 8}
+{$ASSERTIONS OFF}
+{$BOOLEVAL OFF}
+{$DEBUGINFO OFF}
+{$EXTENDEDSYNTAX ON}
+{$IMPORTEDDATA ON}
+{$IOCHECKS ON}
+{$LOCALSYMBOLS OFF}
+{$LONGSTRINGS ON}
+{$OPENSTRINGS ON}
+{$OPTIMIZATION ON}
+{$OVERFLOWCHECKS OFF}
+{$RANGECHECKS OFF}
+{$REFERENCEINFO OFF}
+{$SAFEDIVIDE OFF}
+{$STACKFRAMES OFF}
+{$TYPEDADDRESS OFF}
+{$VARSTRINGCHECKS ON}
+{$WRITEABLECONST ON}
+{$MINENUMSIZE 1}
+{$IMAGEBASE $400000}
+{$DESCRIPTION 'Bluecave: BarMenus Components'}
+{$RUNONLY}
+{$IMPLICITBUILD OFF}
+
+requires
+  vcl;
+
+contains
+  BcUtilities in '..\Source\BcUtilities.pas',
+  BarMenus in '..\Source\BarMenus.pas',
+  BarPopupMenuLayer in '..\Source\BarPopupMenuLayer.pas',
+  BcCustomDrawModule in '..\Source\BcCustomDrawModule.pas',
+  BcDrawModule in '..\Source\BcDrawModule.pas',
+  BcExceptions in '..\Source\BcExceptions.pas',
+  BcFontUtilities in '..\Source\BcFontUtilities.pas',
+  BcLayeredWindows in '..\Source\BcLayeredWindows.pas',
+  BcRectUtilities in '..\Source\BcRectUtilities.pas';
+
+end.

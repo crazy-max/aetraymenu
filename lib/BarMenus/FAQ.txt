@@ -1,0 +1,211 @@
+  ============================================================================
+                BarMenu Components Frequently Asked Questions
+        Copyright (C) 2000-2003 Bluecave Software. All Rights Reserved.
+  ============================================================================
+
+  This file contains frequently asked questions and answers to those. Before
+  asking the Author for help, please read this file completely. If your
+  problem is not solved after read this file, you may contact the Author.
+  For contact information see Readme.txt.
+
+  FAQ:
+   1. How to use separator line item captions?
+   2. How to convert existing menus to BarMenus?
+   3. How to use OnBeforeDrawBar and OnAfterDrawBar?
+   4. I upgraded from version older than 2.0.3 to latest version
+      and it gives me error that some properties do not exists.
+      What is this all about?
+   5. I'm getting "Parameter Incorrect" errors! What is this?
+   6. How to use OnMeasureMenuItem and OnDrawMenuItem events of
+      TBcCustomDrawModule?
+   7. How to create own DrawModule?
+   8. I know how to create the menuitems dynamically but I have
+      some problems with it in BarMenus. So how I do?
+   9. I'm creating my menus dynamically at runtime but the menu
+      creation takes very long. My menu has Massive amount of items.
+
+  ----------------------------------------------------------------------------
+  1.
+  Q: How to use separator line item captions?
+
+  A: You make the separator line like before (with "-" character as caption) and
+  then the separator line caption you want to have is put to the Hint property
+  of the item. If you want to disable the separator line caption, set the
+  items Enabled property to False. And of course you need to have the menu
+  component ShortLines set True. See the demo application for example.
+
+  Tip: If you want to have separator line as the first item in the menu, you
+       need to set the AutoLineReducation on the parent item to maManual.
+       Otherwise the item is removed automatically by VCL.
+
+  ----------------------------------------------------------------------------
+  2.
+  Q: How to convert existing menus to BarMenus?
+
+  A: You need to edit the source code and the dfm source code manually.
+
+  Classes which are compatible:
+
+    TMainMenu - TBcBarMainMenu
+    TPopupMenu - TBcBarPopupMenu
+
+    1. Change the menu class to BarMenus class in the source code. Example:
+
+       TForm1 = class(TForm)
+         PopupMenu1: TPopupMenu;                    <-- This line
+       private
+       ...
+
+       Change to:
+
+       TForm1 = class(TForm)
+         PopupMenu1: TBcBarPopupMenu;               <-- This line
+       private
+       ...
+
+    2. Do the same change to the dfm source. Activate the form and press ALT-F12.
+       You will now get the form in text format to the editor. Change the
+       component's class which you changed in the source code. Example:
+
+       object Form1: TForm1
+         object PopupMenu1: TPopupMenu              <-- This line
+           AutoLineReduction = maManual
+           Images = PopupMenuImages
+       ...
+
+       Change to:
+
+       object Form1: TForm1
+         object PopupMenu1: TBcBarPopupMenu         <-- This line
+           AutoLineReduction = maManual
+           Images = PopupMenuImages
+       ...
+
+       After that press ALT-F12 again to see the form again. Now the menu
+       component has all new properties and features!
+
+  ----------------------------------------------------------------------------
+  3.
+  Q: How to use OnBeforeDrawBar and OnAfterDrawBar?
+
+  A: As told in the description of these events in the Readme.txt and seen in
+     the example Demo project these are fairly easy to use. Here is the example
+     code from the Demo project for OnBeforeDrawBar event:
+
+     procedure TForm1.BcBarPopupMenu3BeforeDrawBar(Sender: TObject;
+       ACanvas: TCanvas; ARect: TRect; var DefaultDraw: Boolean);
+     begin
+       DefaultDraw := False; { do not allow default drawing }
+       with ACanvas do
+       begin
+         { fill the whole bar with something }
+         Brush.Bitmap := AllocPatternBitmap(clRed, clYellow);
+         FillRect(ARect);
+         { draw black frame rect around the bar }
+         Brush.Color := clBlack;
+         FrameRect(ARect);
+       end;
+     end;
+
+     OnAfterDrawBar event works same way as the OnBeforeDrawBar with exception
+     of that the ACanvas contains the bar which has been drawn by the component.
+     Also, there is no DefaultDraw parameter in this event. Demo project shows
+     code which copies the bar image to the parent forms TImage as "preview":
+
+     procedure TForm1.BcBarPopupMenu1AfterDrawBar(Sender: TObject;
+       ACanvas: TCanvas; ARect: TRect);
+     begin
+       with Image1.Canvas do
+       begin
+         { empty the image }
+         Brush.Color := Form1.Color;
+         FillRect(Rect(0, 0, Image1.Width, Image1.Height));
+         { copy the menu bar to the image1 }
+         CopyRect(ARect, ACanvas, ARect);
+       end;
+     end;
+
+     You must note that the events are excuted only when the internal bar
+     doublebuffer needs refresh. So, if the buffer contants valid bar events
+     are not executed. This behavior can be seen in the Demo project. Try
+     testing the Enabled check item in the Toolmenu popupmenu.
+
+  ----------------------------------------------------------------------------
+  4.
+  Q: I upgraded from version older than 2.0.2 to latest version and it gives
+     me error that some properties do not exists. What is this all about?
+
+  A: Read the History.txt. Older versions used TBitmaps, but new versions have
+     TPicture, which gives much more better support for different file formats
+     including .BMP, .ICO, metafiles and other TGraphic supported formats.
+
+     Only solution is to Ignore the errors and reset the BarPicture (old
+     BarBitmap) and BarBackPicture (old BarBackBitmap) properties manually.
+
+  A: This has been changed in 2.1.0. Again.. Now the Picture properties are
+     TBitmaps by default. This was done to find the cause of the problem
+     described in the Question 5. Also now that the TBitmap transparency works
+     it's better as TBitmap uses less resources than TPicture.
+
+  ----------------------------------------------------------------------------
+  5.
+  Q: I'm getting "Parameter Incorrect" errors! What is this? How can I
+     fix this?
+
+  A: This has been fixed in version 2.2.0. This bug was in versions 2.0.3 to
+     2.1.0. If the system had menu animations enabled the bug appeared.
+     "Work-around" by setting the Bar.Visible property to False.
+
+  ----------------------------------------------------------------------------
+  6.
+  Q: How to use OnMeasureMenuItem and OnDrawMenuItem events of
+     TBcCustomDrawModule?
+
+  A: Using these events is very easy. I'd suggest you take a look at the
+     Demo project source code for a nice example.
+
+     It is possible to use the OnMeasureItem and OnDrawItem/OnAdvancedDraw
+     events of the TMenuItems at the same time. The "global"
+     OnMeasureMenuItem and OnDrawMenuItem events are not executed for those
+     items.
+
+     If you wish to have the default drawing then set the DefaultDraw to True
+     and remember to set it to False if you provide custom drawing.
+
+  ----------------------------------------------------------------------------
+  7.
+  Q: How to create own DrawModule?
+
+  A: Select: File | New.. | Component.. | and type "TBcBarMenusDrawModule" as
+     anchestor class.
+
+     Implement the abstract methods DrawMenuItem and MeasureMenuItem of
+     TBcBarMenusDrawModule. See the TBcCustomDrawModule for a very simple
+     example.
+
+  ----------------------------------------------------------------------------
+  8.
+  Q: I know how to create the menuitems dynamically but I have some problems
+     with it in BarMenus. So how I do it?
+
+  A: First download the latest version (or atleast version 2.3.1). It fixes
+     few bugs in dynamic menu creation and adds two methods making the menu
+     creation a bit more efficient.
+
+     Create the items like you would with normal VCL menus. It will probably
+     work with the latest BarMenus as well but it is preferred to use the
+     BeginUpdate and EndUpdate methods. BeginUpdate before you start adding
+     and EndUpdate after you have finished adding the items to the BarMenu.
+
+     Those calls make sure the items are updated correctly (especially the
+     root level).
+
+  ----------------------------------------------------------------------------
+  9. 
+  Q: I'm creating my menus dynamically at runtime but the menu creation 
+     takes very long. My menu has Massive amount of items.
+
+  A: This is a bug/feature of VCL menus. See the Demo2 application for
+     a hack to get around this problem/feature.
+
+

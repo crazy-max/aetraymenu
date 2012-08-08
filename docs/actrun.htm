@@ -1,0 +1,94 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+<link rel="stylesheet" type="text/css" href="main.css" />
+<title>"Run" Action</title>
+</head>
+<body>
+<p>
+<table border="0" cellpadding="0" cellspacing="0" class="header"><tr>
+<td width="5" bgcolor="#4682b4">&nbsp;</td>
+<td bgcolor="#4682b4"><h1>"Run" Action</h1></td>
+<td width="150" background="hdrgrad.jpg">&nbsp;</td>
+</tr></table>
+</p>
+<p>
+<h2>Description</h2>
+With this type of action, you can run a program. You can specify which program is to be executed, along with the working directory, parameters etc.
+</p>
+<p>
+<h2>Parameters</h2>
+The following is a list of the supported <a href="params.htm">parameters</a>:
+<dl>
+<dt>FileName<span class="reqmarker" title="Required">REQ</span><span class="varmarker" title="May include variables">VAR</span>
+</dt>
+<dd>
+<h3>Value</h3>
+String
+<h3>Description</h3>
+Specifies the name of the file to be executed. The file has to be an executable; if you want to open a document, use the <a href="actshellexec.htm"><code>shellexecute</code></a> action instead.
+<h3>Example</h3>
+<code>FileName: "%Windows%\Notepad.exe"</code>
+</dd>
+<dt>Parameters<span class="varmarker" title="May include variables">VAR</span>
+</dt>
+<dd>
+<h3>Value</h3>
+String
+<h3>Description</h3>
+If you want to pass command-line parameters to the program, you can put them here.
+<h3>Example</h3>
+<code>Parameters: "%AeTrayMenuPath%\AeTrayMenu.ini"</code>
+</dd>
+<dt>WorkingDir<span class="varmarker" title="May include variables">VAR</span>
+</dt>
+<dd>
+<h3>Value</h3>
+String
+<h3>Description</h3>
+With this parameter, you can control the directory in which the program is executed. Some programs look for files in the 'current' directory, so in that case this setting will be useful.
+<h3>Example</h3>
+<code>WorkingDir: "%Windows%"</code>
+</dd>
+<dt>ShowCmd</dt>
+<dd>
+<h3>Value</h3>
+<code>normal</code>|<code>hidden</code>|<code>maximized</code>|<code>minimized</code>
+<h3>Description</h3>
+Most programs open a window on the screen when executed; with this setting, you can control how (and if) that window will be shown.
+<h3>Example</h3>
+<code>ShowCmd: maximized</code>
+</dd>
+<dt>Flags</dt>
+<dd>
+<h3>Value</h3>
+Flag list
+<h3>Description</h3>
+This parameter is a set of extra options. Multiple options may be used by separating them by spaces. The following options are supported:
+<dl>
+<dt>ignoreerrors</dt>
+<dd>Normally, AeTrayMenu pops up a message box when the action cannot be performed for some reason (e.g. when it can't find the program). Specify this flag to suppress these error messages.</dd>
+<dt>waituntilterminated</dt>
+<dd>If you're executing multiple actions sequentially (in a <a href="sectbatch.htm">batch action section</a>), you can use this flag to suspend execution of the next action until the program has been terminated.</dd>
+<dt>waituntilidle</dt>
+<dd>This flag works like the <code>waituntilterminated</code> flag, but instead waits until the program is waiting for user input with no input pending.</dd>
+</dl>
+<h3>Example</h3>
+<code>Flags: ignoreerrors waituntilterminated</code>
+</dd>
+</dl>
+</p>
+<p>
+<h2>Example</h2>
+<samp>
+Action: run; FileName: "%Windows%\Notepad.exe"; Parameters: "%AeTrayMenuPath%\AeTrayMenu.ini"; ShowCmd: maximized; Flags: waituntilterminated
+</samp>
+</p>
+<p>
+<div class="seealso"><img src="seealso.gif" width="15" height="11" alt="See also" />&nbsp;See Also</div>
+<a href="actionsref.htm">List of Available Actions</a><br />
+<a href="actshellexec.htm">"ShellExecute" Action</a><br />
+</p>
+</body>
+</html>

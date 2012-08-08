@@ -1,0 +1,126 @@
+===========================================================================
+
+BLUECAVE SOFTWARE - BLUECAVE PUBLIC LICENSE
+
+  Bluecave Software Licenses are available at,
+
+   http://www.bluecave.net/licenses/
+
+===========================================================================
+
+Version: 1.1 (2001-27-08)
+
+Copyright (C) 2001 Bluecave Software. http://www.bluecave.net/
+Everyone is permitted to copy and distribute verbatim copies
+of this license document, but changing it is not allowed.
+
+
+                       BLUECAVE PUBLIC LICENSE
+
+   TERMS AND CONDITIONS FOR COPYING, DISTRIBUTION AND MODIFICATION
+
+
+Permission is granted for anyone to use this Software ("Software" refers 
+to any such software or work which has been distributed under these terms)
+provided that the following conditions are met:
+
+0. This License Agreement applies to any software library or other 
+   program which contains a notice placed by the copyright holder or other 
+   authorized party saying it may be distributed under the terms of this 
+   Bluecave Public License (also called "This License"). Each licensee is 
+   addressed as "You". For example of license notice see EXHIBIT A.
+
+Using:
+
+1. You are permitted to Compile ("Compile" here refers to the automatic
+   process of translating the Software's source code into executable
+   machine code by the Borland Delphi, Kylix, or C++Builder compilers.)
+   the Software into any kind of applications when you have done the
+   following:
+
+   a) Copyright lines of the Author must be present in the application
+      that uses the Software. The lines must be in a place which is
+      accessible with basic knowledge of the enviroment. This kind of
+      places are for example about screen and readme file. For the format
+      of the lines see EXHIBIT B.
+
+   For Beta Software there is no other restrictions than the redistribution
+   of modified Software. It is up to you to choose either to use or not 
+   to use versions of the Software which have not been fully tested.
+   Beta Software might be incompatible with the final release.
+
+Modifying:
+
+2. If You modify this Software, following conditions must be met:
+
+   a) All original copyright notices must be preserved.
+   b) You must cause the files modified to carry prominent notices stating
+      that You changed the files and the date of any change and the reason
+      for such modification.
+   c) Resulting modified software must contain a notice that it is modified
+      version of the original Software so that no one is mislead to think
+      the modified software as the original Software.
+   d) Resulting modified software must be licensed at no charge to all
+      third parties under the terms of this License.
+
+   In addition the Author should be notified of the changes. It's not
+   required to do so, but it is preferred. Notifying increases the chances
+   of the modifications to become part of the original Software.
+
+Redistributing:
+
+3. All redistributions of the Software must be in their original,
+   unmodified form. You may charge a fee for the physical act of 
+   transferring a copy, and you may at your option offer warranty 
+   protection in exchange for a fee.
+
+4. None of the Software's files or parts of those may be redistributed
+   for profit or as part of commercial or shareware software packages,
+   without express written permission of the Author.
+
+5. If the the Software is stated as Beta Software you are NOT allowed to
+   redistribute modified versions of the Software without express written
+   permission of the Author.
+
+No Warranty:
+
+6. Software distributed under this License is distributed on an "AS IS"
+   basis, WITHOUT WARRANTY OF ANY KIND, either express or implied. There
+   is no guarantee of fitness for this Software. In no event shall the
+   author be held liable for any damages arising from the use of this
+   Software. Bug reports or fixes may be sent to the Author, who may or
+   may not act on them as he or she desires.
+
+7. Full backward compatibility in future versions of the Software is not
+   guaranteed. In no event shall the Author be held liable for any
+   inconvenience or damages arising from lack of backward compatibility.
+
+8. The Author reserves the right to, at any time, impose additional
+   restrictions on how the Software may be used.
+
+Termination:
+
+9. If You do not agree to any of these terms, You are not permitted to use
+   the Software in any way, and all copies of it must be deleted from
+   Your system(s).
+
+
+EXHIBIT A. License Notice
+
+ "The contents of this file are subject to the Bluecave Public License V 1.0
+  (the "License"). You may not copy or use this file, in either source code
+  or executable form, except in compliance with the License. You may obtain
+  a copy of the License at http://www.bluecave.net/licenses/.
+
+  Software distributed under the License is distributed on an "AS IS" basis,
+  WITHOUT WARRANTY OF ANY KIND, either express or implied. See the License
+  for the specific language governing rights and limitations under the
+  License. 
+
+  Copyright (C) <year> <name of the Author>. All Rights Reserved."
+
+
+EXHIBIT B. Copyrights
+
+ "<Software> Copyright (C) <year> <name of the Author>. All Rights Reserved. 
+  <contact information>."

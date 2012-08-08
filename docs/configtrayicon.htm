@@ -1,0 +1,39 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+<link rel="stylesheet" type="text/css" href="main.css" />
+<title>[Config]: TrayIcon</title>
+</head>
+<body>
+<p>
+<table border="0" cellpadding="0" cellspacing="0" class="header"><tr>
+<td width="5" bgcolor="#4682b4">&nbsp;</td>
+<td bgcolor="#4682b4"><h1>[Config]: TrayIcon</h1></td>
+<td width="150" background="hdrgrad.jpg">&nbsp;</td>
+</tr></table>
+</p>
+<p>
+<h2>Value</h2>
+Filename<span class="varmarker" title="May include variables">VAR</span><span class="reqmarker" title="Required">REQ</span>
+</p>
+<p>
+<h2>Description</h2>
+The value of this directive should point to a Windows icon file; it will be used for the tray icon.
+</p>
+<div class="stop">
+<img src="stopsign.gif" width="16" height="16" alt="Stopsign" class="leftmarker" />You cannot specify both the <code>TrayIcon</code> directive and the <a href="configtrayiconrunning.htm"><code>TrayIcon*Running</code></a> directives.
+</div>
+<p>
+<h2>Example</h2>
+<samp>
+[Config]
+TrayIcon=trayicon.ico
+</samp>
+</p>
+<p>
+<div class="seealso"><img src="seealso.gif" width="15" height="11" alt="See also" />&nbsp;See Also</div>
+<a href="configtrayiconrunning.htm">[Config]: TrayIcon*Running</a><br />
+</p>
+</body>
+</html>

@@ -1,0 +1,19 @@
+LICENSE OF AESTAN TRAY MENU
+===========================
+
+THE SOFTWARE PRODUCT IS PROVIDED "AS IS" AND WITHOUT WARRANTIES AS TO PERFORMANCE OF MERCHANTABILITY OR ANY OTHER WARRANTIES WHETHER EXPRESSED OR IMPLIED. THE USER MUST ASSUME THE ENTIRE RISK OF USING THIS PROGRAM. 
+To the maximum extent permitted by applicable law, in no event shall the author or its suppliers be liable for any special, incidental, indirect, or consequential damages whatsoever (including, without limitation, damages for loss of business profits, business interruption, loss of business information, or any other pecuniary loss) arising out of the use of or inability to use the SOFTWARE PRODUCT, even if the author has been advised of the possibility of such damages.
+
+This work is hereby released into the Public Domain.
+To view a copy of the public domain dedication, visit:
+
+  http://creativecommons.org/licenses/publicdomain/
+
+or send a letter to:
+
+  Creative Commons
+  559 Nathan Abbott Way
+  Stanford
+  California 94305
+  USA
+
