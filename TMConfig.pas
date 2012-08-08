@@ -67,7 +67,7 @@ type
     FServiceGlyphStopped: Integer;
     FServiceGlyphPaused: Integer;
     FOnSelectMenuItem: TNotifyEvent;
-    FDoubleClickAction: TTMMultiAction;
+    FDoubleClickAction, FLeftClickAction, FRightClickAction: TTMMultiAction;
     FStartupAction: TTMMultiAction;
     FScript: TStringList;
     FOnBuiltInActionExecute: TNotifyEvent;
@@ -132,6 +132,8 @@ type
     property CheckServicesTimer: TTimer read FCheckServicesTimer write FCheckServicesTimer;
     property Variables: TObjectList read FVariables write FVariables;
     property DoubleClickAction: TTMMultiAction read FDoubleClickAction write FDoubleClickAction;
+    property LeftClickAction: TTMMultiAction read FLeftClickAction write FLeftClickAction;
+    property RightClickAction: TTMMultiAction read FRightClickAction write FRightClickAction;
     property StartupAction: TTMMultiAction read FStartupAction write FStartupAction;
     property HtmlActions: TStringList read FHtmlActions write FHtmlActions;
 
@@ -2026,6 +2028,8 @@ begin
   EnumIniSection(EnumMessages, 'Messages', 0);
 
   ReadMultiAction(DoubleClickAction, 'DoubleClickAction');
+  ReadMultiAction(LeftClickAction, 'LeftClickAction');
+  ReadMultiAction(RightClickAction, 'RightClickAction');
   ReadMultiAction(StartupAction, 'StartupAction');
 end;
 
@@ -2043,6 +2047,8 @@ procedure TTMConfigReader.ValidateProperties;
 begin
   if (not Assigned(CheckServicesTimer)) or
      (not Assigned(DoubleClickAction)) or
+     (not Assigned(LeftClickAction)) or
+     (not Assigned(RightClickAction)) or
      (not Assigned(ImageList)) or
      (not Assigned(OnBuiltInActionExecute)) or
      (not Assigned(OnSelectMenuItem)) or
