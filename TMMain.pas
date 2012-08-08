@@ -467,6 +467,10 @@ begin
           try
             TTMAction(Tag).ExecuteAction;
           except
+            on E: EAbort do
+              begin
+                { ignore }
+              end;
             on E: Exception do
               ExceptionMsgBox(SMainCouldNotExecuteMenuItem, E);
           end;

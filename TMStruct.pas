@@ -628,7 +628,9 @@ end;
 
 function TPromptVariable.GetValue: String;
 begin
-  Result := InputBox(Caption, Text, DefaultValue);
+  Result := DefaultValue;
+  if not InputQuery(Caption, Text, Result) then
+    Abort;
 end;
 
 procedure TPromptVariable.SetValue(const AValue: String);
