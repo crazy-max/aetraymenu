@@ -2,11 +2,11 @@
 
 [AeTrayMenu](https://obroekma.home.xs4all.nl/aetraymenu/) is a small application that you can use to insert a flexible and configurable menu into your Windows system tray, which can be used to control services, run programs etc.
 
-![](https://creativecommons.org/images/public/norights.gif)
+[![Public Domain](https://creativecommons.org/images/public/norights.gif)](http://creativecommons.org/licenses/publicdomain/)<br />
 This work is dedicated to the [Public Domain](http://creativecommons.org/licenses/publicdomain/).
 
 Yours sincerely,<br />
-- [Onno Broekmans](http://www.onnodb.com/)
+\- [Onno Broekmans](http://www.onnodb.com/)
 
 ## What is it?
 
