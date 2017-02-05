@@ -2,6 +2,12 @@
 
 [AeTrayMenu](https://obroekma.home.xs4all.nl/aetraymenu/) is a small application that you can use to insert a flexible and configurable menu into your Windows system tray, which can be used to control services, run programs etc.
 
+![](https://creativecommons.org/images/public/norights.gif)
+This work is dedicated to the [Public Domain](http://creativecommons.org/licenses/publicdomain/).
+
+Yours sincerely,<br />
+- [Onno Broekmans](http://www.onnodb.com/)
+
 ## What is it?
 
 When a friend requested me to write an imitation of the [Apache](http://www.apache.org/) Service Monitor, I decided I wanted to write something that would be generally useful and flexible. With Aestan Tray Menu, you can create your own tray menu with access to all sorts of applications, documents and services. AeTrayMenu is open-source.
